@@ -1,4 +1,4 @@
-import type { Job, PubDateSortType } from '../../../types/Job'
+import type { Job, PubDateSortType } from '../types/Job'
 
 export const filterByCompanyName = (query: string, jobs: Job[]) => {
   const normalize = (s: string) => s.toLocaleLowerCase();

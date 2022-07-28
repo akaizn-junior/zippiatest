@@ -6,7 +6,7 @@ import styles from '../../../styles/Jobs.module.css'
 import type { NextPage } from 'next'
 import type { JobsApiResponse, Job } from '../../../types/Job'
 
-import { getCompanyNames, filterByCompanyName, filter7DaysPubbed } from './helpers'
+import { getCompanyNames, filterByCompanyName, filter7DaysPubbed } from '../../../helpers/job'
 
 import Card from '../../../components/Card/Card'
 import Portal from '../../../components/Portal/Portal'
