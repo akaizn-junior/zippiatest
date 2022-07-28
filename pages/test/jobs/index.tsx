@@ -1,5 +1,4 @@
 import { Fragment, useState } from 'react'
-import Portal from 'react-portal'
 import Head from 'next/head'
 
 import styles from '../../../styles/Jobs.module.css'
@@ -10,6 +9,7 @@ import type { JobsApiResponse, Job } from '../../../types/Job'
 import { getComapnyNames, filter7DaysPubbed } from './helpers'
 
 import Card from '../../../components/Card/Card'
+import Portal from '../../components/Portal/Portal'
 
 const Jobs: NextPage = (props: any) => {
   const { data } : { data: JobsApiResponse } = props
@@ -43,7 +43,6 @@ const Jobs: NextPage = (props: any) => {
                 onClick={() => setShowNames(true)}
               />
               <Portal
-                open={showNames}
                 parent="#company-name-select"
                 onClick={() => setShowNames(false)}
               >
