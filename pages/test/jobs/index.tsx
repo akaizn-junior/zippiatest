@@ -49,6 +49,7 @@ const Jobs: NextPage = (props: any) => {
                     const value = e.target.value;
                     const res = filterByCompanyName(value, data.jobs)
                     setJobs(res)
+                    setShowNames(false)
                   }}
                 />
                 <Portal
