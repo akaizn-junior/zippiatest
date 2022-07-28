@@ -1,0 +1,33 @@
+.card {
+  width: 300px;
+  padding: 1em;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.jobTitle {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.companyName {
+  font-size: .88em;
+  color: #222222;
+}
+
+.pubDate {
+  font-size: .8em;
+  color: #272727;
+}
+
+.pubDate span {
+  color: #009c00;
+  margin-right: 3px;
+}
+
+@media (max-width: 1000px) {
+  .card {
+    width: 100%;
+  }
+}

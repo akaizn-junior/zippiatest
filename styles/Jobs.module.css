@@ -1,0 +1,103 @@
+.container {
+  padding: 0 2em;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.displaying {
+  padding: 1em 0;
+  font-size: 1em;
+  color: #222222;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 10px;
+  padding: 2em 0;
+}
+
+/* Filter */
+
+.filters {
+  padding: 1em 0;
+}
+
+.filter {
+  display: inline-block;
+}
+
+.filter ~ .filter {
+  margin-left: 10px;
+}
+
+.filter p {
+  font-size: .8em;
+  color: #222222;
+}
+
+.filter button ~ button {
+  margin-left: 10px;
+}
+
+.filter input,
+.filter button {
+  padding: 7px 5px;
+  border-radius: 4px;
+  border: 1px solid #d3d3d3;
+  outline: none;
+}
+
+.filter input:hover,
+.filter button:hover {
+  outline: 1px solid #d3d3d3;
+}
+
+.filter input:focus,
+.filter button:focus {
+  outline: 2px solid blue;
+}
+
+.filter button {
+  cursor: pointer;
+}
+
+/* end Filters */
+
+.footer {
+  font-size: .75em;
+  padding-top: 5em;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100vh;
+  }
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .displaying,
+  .cardCompanyName {
+    color: #cfcfcf;
+  }
+
+  .detail {
+    color: #aaaaaa;
+  }
+
+  .card {
+    border-color: #222222;
+  }
+
+  .cardTitle {
+    color: #dadada;
+  }
+}
