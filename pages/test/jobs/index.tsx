@@ -11,6 +11,10 @@ import { getCompanyNames, filterByCompanyName, filter7DaysPubbed } from '../../.
 import Card from '../../../components/Card/Card'
 import Portal from '../../../components/Portal/Portal'
 
+/**
+ * This component renders a grid of jobs with minimal details
+ * and offers some basic filters
+*/
 const Jobs: NextPage = (props: any) => {
   const { data } : { data: JobsApiResponse } = props
 

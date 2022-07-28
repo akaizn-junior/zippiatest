@@ -1,5 +1,6 @@
 import type { Job, PubDateSortType } from '../types/Job'
 
+/** simply compare a value given to the one read from company name */
 export const filterByCompanyName = (query: string, jobs: Job[]) => {
   const normalize = (s: string) => s.toLocaleLowerCase();
 
@@ -12,6 +13,7 @@ export const filterByCompanyName = (query: string, jobs: Job[]) => {
   return found;
 };
 
+/** Calculate the difference between pub date and today */
 const getDateDiff = (pubDate: Date) => {
   const dayInMilliseconds = 24 * 3600 * 1000;
   const today = new Date()
@@ -20,8 +22,10 @@ const getDateDiff = (pubDate: Date) => {
   return diff;
 }
 
+/** is the pub date between 7 days */
 const is7DaysPubbed = (d: Date) => getDateDiff(new Date(d)) <= 7
 
+/** filter pub date within 7 days */
 export const filter7DaysPubbed = (jobs: Job[], type: PubDateSortType = 'most') => {
   const found = jobs.filter((job: Job) => {
     const pubDate = new Date(job.postingDate);
@@ -39,6 +43,7 @@ export const filter7DaysPubbed = (jobs: Job[], type: PubDateSortType = 'most') =
   return found;
 };
 
+/** create a list of company names */
 export const getCompanyNames = (jobs: Job[]) => {
   return jobs.map(j => j.companyName)
 }
