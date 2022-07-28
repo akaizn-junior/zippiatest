@@ -36,12 +36,12 @@
   color: #222222;
 }
 
-.filter button ~ button {
+.filterNewButton ~ .filterNewButton {
   margin-left: 10px;
 }
 
 .filter input,
-.filter button {
+.filterNewButton {
   padding: 7px 5px;
   border-radius: 4px;
   border: 1px solid #d3d3d3;
@@ -49,20 +49,44 @@
 }
 
 .filter input:hover,
-.filter button:hover {
+.filterNewButton:hover {
   outline: 1px solid #d3d3d3;
 }
 
 .filter input:focus,
-.filter button:focus {
+.filterNewButton:focus {
   outline: 2px solid blue;
 }
 
-.filter button {
+.filterNewButton {
   cursor: pointer;
 }
 
 /* end Filters */
+
+.companyNames {
+  position: fixed;
+  z-index: 3;
+  max-height: 300px;
+  overflow: hidden auto;
+  background: #ffffff;
+}
+
+.companyNames button {
+  border: none;
+  outline: none;
+  display: block;
+  padding: 10px 5px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  font-size: .95em;
+}
+
+.companyNames button:hover,
+.companyNames button:focus {
+  background-color: #ebebeb;
+}
 
 .footer {
   font-size: .75em;

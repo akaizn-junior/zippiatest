@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
 
 import styles from '../../../styles/Jobs.module.css'
@@ -6,10 +6,10 @@ import styles from '../../../styles/Jobs.module.css'
 import type { NextPage } from 'next'
 import type { JobsApiResponse, Job } from '../../../types/Job'
 
-import { getComapnyNames, filter7DaysPubbed } from './helpers'
+import { getCompanyNames, filterByCompanyName, filter7DaysPubbed } from './helpers'
 
 import Card from '../../../components/Card/Card'
-import Portal from '../../components/Portal/Portal'
+import Portal from '../../../components/Portal/Portal'
 
 const Jobs: NextPage = (props: any) => {
   const { data } : { data: JobsApiResponse } = props
@@ -18,11 +18,12 @@ const Jobs: NextPage = (props: any) => {
 
   const firstTenJobs = data.jobs.slice(0, 10)
   const [jobs, setJobs] = useState(firstTenJobs)
+  const [nameInput, setNameInput] = useState('')
 
-  const companyNames = getComapnyNames(data.jobs)
+  const [companyNames] = useState(getCompanyNames(data.jobs))
 
   return (
-    <Fragment>
+    <>
       <Head>
         <title>Test Jobs</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -36,26 +37,50 @@ const Jobs: NextPage = (props: any) => {
           <div className={styles.filters}>
             <div className={styles.filter}>
               <p>Company name</p>
-              <input
-                id="company-name-select"
-                type="text"
-                placeholder='Company name'
-                onClick={() => setShowNames(true)}
-              />
-              <Portal
-                parent="#company-name-select"
-                onClick={() => setShowNames(false)}
-              >
-                {companyNames.map((nm: string, i: number) =>
-                  <button key={i}>{nm}</button>
-                )}
-              </Portal>
+              <div id="company-name-select">
+                <input
+                  style={{ zIndex: 3 }}
+                  type="search"
+                  placeholder={nameInput}
+                  value={nameInput}
+                  onClick={() => setShowNames(true)}
+                  onInput={e => {
+                    // @ts-ignore-line
+                    const value = e.target.value;
+                    const res = filterByCompanyName(value, data.jobs)
+                    setJobs(res)
+                  }}
+                />
+                <Portal
+                  open={showNames}
+                  parent="#company-name-select"
+                  onClick={() => setShowNames(false)}
+                >
+                  <div className={styles.companyNames}>
+                    {companyNames.map((nm: string, i: number) =>
+                      <button
+                        type="button"
+                        key={i}
+                        data-value={nm}
+                        onClick={e => {
+                          // @ts-ignore-line
+                          const value = e.target.dataset.value
+                          const res = filterByCompanyName(value, data.jobs)
+                          setNameInput(value)
+                          setJobs(res)
+                        }}
+                      >{nm}</button>
+                    )}
+                  </div>
+                </Portal>
+              </div>
             </div>
             <div className={styles.filter}>
               <p>Published in the last 7 days</p>
               <div>
                 <button
                   type="button"
+                  className={styles.filterNewButton}
                   onClick={() => {
                     const res = filter7DaysPubbed(data.jobs)
                     setJobs(res)
@@ -65,6 +90,7 @@ const Jobs: NextPage = (props: any) => {
                 </button>
                 <button
                   type="button"
+                  className={styles.filterNewButton}
                   onClick={() => {
                     const res = filter7DaysPubbed(data.jobs, 'least')
                     setJobs(res)
@@ -85,7 +111,7 @@ const Jobs: NextPage = (props: any) => {
           &copy; 2022 Simao Nziaka. Test App for <i>Zippia</i>
         </footer>
       </div>
-    </Fragment>
+    </>
   )
 }
 
