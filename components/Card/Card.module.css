@@ -31,3 +31,22 @@
     width: 100%;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    border-color: #525252;
+  }
+
+  .cardTitle {
+    color: #dadada;
+  }
+
+  .pubDate,
+  .companyName {
+    color: #cfcfcf;
+  }
+
+  .pubDate span {
+    color: #00ff00;
+  }
+}

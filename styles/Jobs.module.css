@@ -110,19 +110,22 @@
 
 @media (prefers-color-scheme: dark) {
   .displaying,
-  .cardCompanyName {
+  .filter p {
     color: #cfcfcf;
   }
 
-  .detail {
-    color: #aaaaaa;
+  .filter input,
+  .filterNewButton {
+    border: 1px solid #535353;
   }
 
-  .card {
-    border-color: #222222;
+  .companyNames {
+    background: #252525;
+    border: 1px solid #535353;
   }
 
-  .cardTitle {
-    color: #dadada;
+  .companyNames button:hover,
+  .companyNames button:focus {
+    background-color: #585858;
   }
 }
