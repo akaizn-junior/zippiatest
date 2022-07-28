@@ -51,10 +51,11 @@ const Jobs: NextPage = (props: any) => {
                   onInput={e => {
                     // @ts-ignore-line
                     const value = e.target.value;
-                    const res = filterByCompanyName(value, data.jobs)
-                    setJobs(res)
-                    setShowNames(false)
-                    setNameInput('')
+                    if (!value) {
+                      const res = filterByCompanyName(value, data.jobs)
+                      setJobs(res)
+                      setShowNames(false)
+                    }
                   }}
                 />
                 <Portal
