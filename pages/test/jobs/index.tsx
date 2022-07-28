@@ -41,7 +41,7 @@ const Jobs: NextPage = (props: any) => {
                 <input
                   style={{ zIndex: 3 }}
                   type="search"
-                  placeholder={nameInput}
+                  placeholder='Company name'
                   value={nameInput}
                   onClick={() => setShowNames(true)}
                   onInput={e => {
@@ -50,6 +50,7 @@ const Jobs: NextPage = (props: any) => {
                     const res = filterByCompanyName(value, data.jobs)
                     setJobs(res)
                     setShowNames(false)
+                    setNameInput('')
                   }}
                 />
                 <Portal
