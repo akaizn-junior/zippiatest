@@ -141,4 +141,10 @@
   .companyNames button:focus {
     background-color: #585858;
   }
+
+  .filterReset {
+    background-color: #7ea5ff;
+    border: 1px solid #6c4eff;
+    color: #000000;
+  }
 }
