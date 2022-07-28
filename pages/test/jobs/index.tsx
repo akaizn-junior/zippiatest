@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react'
+import Portal from 'react-portal'
 import Head from 'next/head'
 
 import styles from '../../../styles/Jobs.module.css'
@@ -6,15 +7,19 @@ import styles from '../../../styles/Jobs.module.css'
 import type { NextPage } from 'next'
 import type { JobsApiResponse, Job } from '../../../types/Job'
 
-import { filterByCompanyName, filter7DaysPubbed } from './helpers'
+import { getComapnyNames, filter7DaysPubbed } from './helpers'
 
 import Card from '../../../components/Card/Card'
 
 const Jobs: NextPage = (props: any) => {
   const { data } : { data: JobsApiResponse } = props
 
+  const [showNames, setShowNames] = useState(false)
+
   const firstTenJobs = data.jobs.slice(0, 10)
   const [jobs, setJobs] = useState(firstTenJobs)
+
+  const companyNames = getComapnyNames(data.jobs)
 
   return (
     <Fragment>
@@ -32,15 +37,20 @@ const Jobs: NextPage = (props: any) => {
             <div className={styles.filter}>
               <p>Company name</p>
               <input
+                id="company-name-select"
                 type="text"
-                placeholder='Filter by company name'
-                onInput={e => {
-                  /* @ts-ignore-line */
-                  const val = e.target.value;
-                  const res = filterByCompanyName(val, data.jobs)
-                  setJobs(res)
-                }}
+                placeholder='Company name'
+                onClick={() => setShowNames(true)}
               />
+              <Portal
+                open={showNames}
+                parent="#company-name-select"
+                onClick={() => setShowNames(false)}
+              >
+                {companyNames.map((nm: string, i: number) =>
+                  <button key={i}>{nm}</button>
+                )}
+              </Portal>
             </div>
             <div className={styles.filter}>
               <p>Published in the last 7 days</p>

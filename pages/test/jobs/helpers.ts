@@ -38,3 +38,7 @@ export const filter7DaysPubbed = (jobs: Job[], type: PubDateSortType = 'most') =
 
   return found;
 };
+
+export const getComapnyNames = (jobs: Job[]) => {
+  return jobs.map(j => j.companyName)
+}
