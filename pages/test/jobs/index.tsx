@@ -46,6 +46,7 @@ const Jobs: NextPage = (props: any) => {
                   style={{ zIndex: 3 }}
                   type="search"
                   placeholder='Company name'
+                  readOnly
                   value={nameInput}
                   onClick={() => setShowNames(true)}
                   onInput={e => {
@@ -106,6 +107,16 @@ const Jobs: NextPage = (props: any) => {
                   Least recent
                 </button>
               </div>
+            </div>
+            <div className={styles.filter}>
+              <button
+              className={styles.filterReset}
+              onClick={() => {
+                setJobs(firstTenJobs)
+                setNameInput('')
+              }}>
+                Reset Filters
+              </button>
             </div>
           </div>
         </header>

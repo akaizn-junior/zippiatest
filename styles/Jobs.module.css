@@ -41,6 +41,7 @@
 }
 
 .filter input,
+.filterReset,
 .filterNewButton {
   padding: 7px 5px;
   border-radius: 4px;
@@ -48,18 +49,26 @@
   outline: none;
 }
 
+.filterReset:hover,
 .filter input:hover,
 .filterNewButton:hover {
   outline: 1px solid #d3d3d3;
 }
 
+.filterReset:focus,
 .filter input:focus,
 .filterNewButton:focus {
   outline: 2px solid blue;
 }
 
+.filterReset,
 .filterNewButton {
   cursor: pointer;
+}
+
+.filterReset {
+  background-color: #ebf1ff;
+  border: 1px solid #e5e0ff;
 }
 
 /* end Filters */
